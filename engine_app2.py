@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDis
 import xgboost as xgb
 
 
-import GridSearchCv
+from sklearn.model_selection import train_test_split, GridSearchCV
 
 
 # -----------------------------
