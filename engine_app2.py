@@ -117,7 +117,7 @@ input_df = pd.DataFrame({
     "Coolant Temperature[C] (Max 195.53)": [Coolant_temp],
     "Oil Pressure[Bar] (Max 7.27)": [Lub_oil_pressure],
     "Fuel Pressure[Bar] (Max 21.14)": [Fuel_pressure],
-    "Coolant Pressure[Bar] (Max 7.48)": [Coolant_pressure]
+    "Coolant Pressure[Bar] (Max 7.48)": [Coolant_pressure],
     "Rpm (Max 2239)": [Engine_rpm]
 })
 
