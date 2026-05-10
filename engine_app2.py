@@ -132,3 +132,8 @@ prediction_prob = model.predict_proba(input_scaled)[0][1]
 if st.button("Predict Failure"):
     st.write(f"Prediction: {'Failure' if prediction == 1 else 'No Failure'}")
     st.write(f"Probability of Failure: {prediction_prob * 100:.2f}%")
+model = xgb.xgbclassifier()
+model.fit(x_train, y_train)
+y_pred = model.predict(x_test)
+accuracy_score(y_test, y_pred)
+
