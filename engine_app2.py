@@ -7,6 +7,10 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import xgboost as xgb
 
+
+import GridSearchCv
+
+
 # -----------------------------
 # Page Title
 # -----------------------------
@@ -67,13 +71,29 @@ X_test_scaled = scaler.transform(X_test)
 # -----------------------------
 # Train model
 # -----------------------------
-model = xgb.XGBClassifier(
+param_grid = {
+    'max_depth': [3, 5, 7],
+    'learning_rate': [0.01, 0.1],
+    'n_estimators': [100, 200]
+}
+
+xgb_model = xgb.XGBClassifier(
     use_label_encoder=False,
-    eval_metric="logloss",
+    eval_metric="logloss", 
     random_state=42
 )
+grid_search = GridsearchCV(
+    estimator=xgb_model,
+    param_grid=param_grid,
+    cv=5,
+    scoring='accuracy',
+    verbose=1
+)
 
-model.fit(X_train_scaled, y_train)
+grid_search.fit(x_train_scaled, y_train)
+
+model = grid_search.best_estimator_
+              
 
 # -----------------------------
 # Predict and Evaluate
@@ -132,8 +152,5 @@ prediction_prob = model.predict_proba(input_scaled)[0][1]
 if st.button("Predict Failure"):
     st.write(f"Prediction: {'Failure' if prediction == 1 else 'No Failure'}")
     st.write(f"Probability of Failure: {prediction_prob * 100:.2f}%")
-model = xgb.xgbclassifier()
-model.fit(x_train, y_train)
-y_pred = model.predict(x_test)
-accuracy_score(y_test, y_pred)
+
 
