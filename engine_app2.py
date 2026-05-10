@@ -113,7 +113,7 @@ Engine_rpm = st.number_input("Rpm (Max 2239)", value=1000)
 
 input_df = pd.DataFrame({
     
-    "Oil Temperature[Bar] (Max 89.59)": [lub_oil_temperature],
+    "Oil Temperature[Bar] (Max 89.59)": [lub_oil_temp],
     "Coolant Temperature[C] (Max 195.53)": [Coolant_temp],
     "Oil Pressure[Bar] (Max 7.27)": [Lub_oil_pressure],
     "Fuel Pressure[Bar] (Max 21.14)": [Fuel_pressure],
