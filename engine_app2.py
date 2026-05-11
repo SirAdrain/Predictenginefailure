@@ -82,7 +82,7 @@ xgb_model = xgb.XGBClassifier(
     eval_metric="logloss", 
     random_state=42
 )
-grid_search = GridsearchCV(
+grid_search = GridSearchCV(
     estimator=xgb_model,
     param_grid=param_grid,
     cv=5,
@@ -90,7 +90,7 @@ grid_search = GridsearchCV(
     verbose=1
 )
 
-grid_search.fit(x_train_scaled, y_train)
+grid_search.fit(X_train_scaled, y_train)
 
 model = grid_search.best_estimator_
               
