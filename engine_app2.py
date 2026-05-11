@@ -72,9 +72,11 @@ X_test_scaled = scaler.transform(X_test)
 # Train model
 # -----------------------------
 param_grid = {
-    'max_depth': [3, 5, 7],
-    'learning_rate': [0.01, 0.1],
-    'n_estimators': [100, 200]
+    'max_depth': [3, 5, 7, 9],
+    'learning_rate': [0.01, 0.05, 0.1],
+    'n_estimators': [100, 200, 300],
+    'subsample': [0.8, 1.0],
+    'colsample_bytree': [0.8, 1.0]
 }
 
 xgb_model = xgb.XGBClassifier(
