@@ -72,12 +72,11 @@ X_test_scaled = scaler.transform(X_test)
 # Train model
 # -----------------------------
 param_grid = {
-    'max_depth': [3, 5, 7, 9],
-    'learning_rate': [0.01, 0.05, 0.1],
-    'n_estimators': [100, 200, 300],
-    'subsample': [0.8, 1.0],
-    'colsample_bytree': [0.8, 1.0]
+    'max_depth': [3, 5],
+    'learning_rate': [0.01, 0.1],
+    'n_estimators': [100, 200]
 }
+
 
 xgb_model = xgb.XGBClassifier(
     use_label_encoder=False,
@@ -87,7 +86,7 @@ xgb_model = xgb.XGBClassifier(
 grid_search = GridSearchCV(
     estimator=xgb_model,
     param_grid=param_grid,
-    cv=5,
+    cv=3,
     scoring='accuracy',
     verbose=1
 )
