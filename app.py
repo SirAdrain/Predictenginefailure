@@ -44,8 +44,8 @@ data = load_data()
 # -----------------------------
 # Define target and features
 # -----------------------------
-y = data["Engine Condition"]
-X = data.drop(columns=["Engine Condition"], errors="ignore")
+y = data["Engine_Condition"]
+X = data.drop(columns=["Engine_Condition"], errors="ignore")
 
 # Convert categorical columns
 # X = pd.get_dummies(X, drop_first=True)
