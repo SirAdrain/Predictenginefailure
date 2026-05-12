@@ -6,16 +6,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import RobustScaler
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import xgboost as xgb
-
-
-from sklearn.model_selection import train_test_split, GridSearchCV
+import GridSearchCv
 
 
 # -----------------------------
 # Page Title
 # -----------------------------
-st.set_page_config(page_title="Predict Failure for Gas Engine", layout="wide")
-st.title("Predict Failure for Gas Engine")
+st.set_page_config(page_title="Predictive Maintenance for Gas Engine", layout="wide")
+st.title("Predictive Maintenance for Gas Engine")
 st.write(
     "This app uses engine data to predict whether a failure will occur."
 )
@@ -71,30 +69,13 @@ X_test_scaled = scaler.transform(X_test)
 # -----------------------------
 # Train model
 # -----------------------------
-param_grid = {
-    'max_depth': [3, 5],
-    'learning_rate': [0.01, 0.1],
-    'n_estimators': [100, 200]
-}
-
-
-xgb_model = xgb.XGBClassifier(
+model = xgb.XGBClassifier(
     use_label_encoder=False,
-    eval_metric="logloss", 
+    eval_metric="logloss",
     random_state=42
 )
-grid_search = GridSearchCV(
-    estimator=xgb_model,
-    param_grid=param_grid,
-    cv=3,
-    scoring='accuracy',
-    verbose=1
-)
 
-grid_search.fit(X_train_scaled, y_train)
-
-model = grid_search.best_estimator_
-              
+model.fit(X_train_scaled, y_train)
 
 # -----------------------------
 # Predict and Evaluate
