@@ -15,7 +15,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 # Page Title
 # -----------------------------
 st.set_page_config(page_title="Predict Failure for Gas Engine", layout="wide")
-st.title("Predictive Maintenance for Gas Engine")
+st.title("Predict Failure for Gas Engine")
 st.write(
     "This app uses engine data to predict whether a failure will occur."
 )
